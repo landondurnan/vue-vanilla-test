@@ -17,17 +17,9 @@ module.exports = {
         exclude: [/node_modules/],
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'ts-loader',
             options: {
-              babelrc: false,
-              presets: [
-                '@babel/preset-typescript',
-                '@babel/preset-react',
-                [
-                  '@babel/preset-env',
-                  { targets: { node: 14 }, modules: false },
-                ],
-              ],
+              appendTsSuffixTo: [/\.vue$/],
               plugins: ['@vanilla-extract/babel-plugin'],
             },
           },
@@ -35,7 +27,15 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          },
+          'postcss-loader',
+          MiniCssExtractPlugin.loader,
+        ],
       },
     ],
   },
