@@ -8,7 +8,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
-import { createGlobalTheme } from '@vanilla-extract/css';
 
 @Component({
   components: {
@@ -19,7 +18,6 @@ export default class App extends Vue {}
 </script>
 
 <style>
-@import './vars.css';
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
